@@ -1,0 +1,30 @@
+# Ignore configuration files that may contain sensitive information.
+sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
+
+drupal/sites/*/settings.php
+drupal/sites/*/civicrm.settings.php
+drupal/sites/*/files
+
+drupal/sites/default/civiext/cache
+
+.DS_Store
+*~
+\#*\#
+*.swp
+*.mysql
+!drupal/sites/all/modules/civicrm/*/*.mysql
+!drupal/sites/all/modules/civicrm/*/*/*.mysql
+!drupal/sites/all/modules/civicrm/*/*/*/*.mysql
+!drupal/sites/all/modules/civicrm/*/*/*/*/*.mysql
+
+tags
+
+*.tar
+*.gz
+*.zip
+
+google*.html
