@@ -147,6 +147,10 @@ function civicrm_source($dsn, $fileName, $lineMode = FALSE) {
 
   require_once "$crmPath/packages/DB.php";
 
+  if (!defined('DB_DSN_MODE')) {
+    define('DB_DSN_MODE', 'auto');
+  }
+
   $db = DB::connect($dsn);
   if (PEAR::isError($db)) {
     die("Cannot open $dsn: " . $db->getMessage());
