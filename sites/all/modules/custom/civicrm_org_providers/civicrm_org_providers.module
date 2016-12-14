@@ -149,7 +149,7 @@ function civicrm_org_providers_block_view($block_name){
                 );
                 $groups = civicrm_api('GroupContact', 'get', $groupParams);
                 foreach($groups['values'] as $dontCare => $group){
-                    if ($group['group_id'] == '131') {
+                    if ($group['group_id'] == '487') {
                         $showLink = TRUE;
                     }
                 }
