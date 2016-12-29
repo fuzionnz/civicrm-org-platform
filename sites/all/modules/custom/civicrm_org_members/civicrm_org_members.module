@@ -28,7 +28,7 @@ function civicrm_org_members_civicrm_buildForm($formName, &$form) {
  */
 function civicrm_org_members_civicrm_sumfields_definitions(&$custom) {
   $custom['fields']['partner_total_twelve_months'] = array(
-    'label' => 'Finanancial and In-Kind Contributions (12 months)',
+    'label' => 'Financial and In-Kind Contributions (12 months)',
     'data_type' => 'Money',
     'html_type' => 'Text',
     'weight' => '15',
@@ -39,7 +39,7 @@ function civicrm_org_members_civicrm_sumfields_definitions(&$custom) {
     'trigger_sql' => '(
       SELECT COALESCE(
         SUM(
-          IF(cont1.financial_type_id = 18, cont1.total_amount*10, IF(cont1.financial_type_id = 14, cont1.total_amount*.5, cont1.total_amount))
+          IF(cont1.financial_type_id = 18, cont1.total_amount*20, IF(cont1.financial_type_id IN (5, 14), cont1.total_amount*.5, cont1.total_amount))
         ), 0)
       FROM civicrm_contribution cont1
       LEFT JOIN civicrm_contribution_soft soft
