@@ -271,6 +271,14 @@ function _extdir_pages_filters_parse($filterExpr) {
     }
   }
 
+  if (array_key_exists('ready', $args)) {
+    if (empty($args['ready'])) {
+      unset($filters['field_extension_ready_value']);
+    } else {
+      $filters['field_extension_ready_value'] = $args['ready'];
+    }
+  }
+
   return $filters;
 }
 
