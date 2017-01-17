@@ -249,6 +249,7 @@ function _extdir_pages_filters_parse($filterExpr) {
     'field_extension_ready_value' => 'ready',
   );
 
+  // If a "ver" param is provided, override the default filter. The override could be empty (opt-out).
   if (array_key_exists('ver', $args)) {
     $versionParts = explode('.', $args['ver']);
     $termName = sprintf('CiviCRM %d.%d', $versionParts[0], $versionParts[1]);
@@ -262,6 +263,7 @@ function _extdir_pages_filters_parse($filterExpr) {
     }
   }
 
+  // If a "status" param is provided, override the default filter. The override could be empty (opt-out).
   if (array_key_exists('status', $args)) {
     if (empty($args['status'])) {
       unset($filters['field_extension_release_status_value']);
@@ -271,6 +273,7 @@ function _extdir_pages_filters_parse($filterExpr) {
     }
   }
 
+  // If a "ready" param is provided, override the default filter. The override could be empty (opt-out).
   if (array_key_exists('ready', $args)) {
     if (empty($args['ready'])) {
       unset($filters['field_extension_ready_value']);
