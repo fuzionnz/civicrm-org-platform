@@ -352,7 +352,7 @@ class ExtdirQueryHelper {
    *   which are (mentally) part of the query -- and the SQL expressions which
    *   identify them
    */
-  function create($query, $entityAliases) {
+  static function create($query, $entityAliases) {
     return new ExtdirQueryHelper($query, $entityAliases);
   }
   function __construct($query, $entityAliases) {
