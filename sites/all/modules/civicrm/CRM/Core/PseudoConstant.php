@@ -220,7 +220,7 @@ class CRM_Core_PseudoConstant {
     if (strpos($fieldName, 'custom_') === 0 && is_numeric($fieldName[7])) {
       $customField = new CRM_Core_BAO_CustomField();
       $customField->id = (int) substr($fieldName, 7);
-      $options = $customField->getOptions();
+      $options = $customField->getOptions($context);
       if ($options && $flip) {
         $options = array_flip($options);
       }
@@ -789,7 +789,7 @@ WHERE  id = %1";
    *
    * @param bool $applyLimit
    *
-   * @return array
+   * @return array|null
    *   array reference of all countries.
    */
   public static function country($id = FALSE, $applyLimit = TRUE) {
@@ -846,7 +846,7 @@ WHERE  id = %1";
         return self::$country[$id];
       }
       else {
-        return CRM_Core_DAO::$_nullObject;
+        return NULL;
       }
     }
     return self::$country;
@@ -1618,12 +1618,12 @@ ORDER BY name";
    *
    * @param int $stateID
    *
-   * @return int
+   * @return int|null
    *   the country id that the state belongs to
    */
   public static function countryIDForStateID($stateID) {
     if (empty($stateID)) {
-      return CRM_Core_DAO::$_nullObject;
+      return NULL;
     }
 
     $query = "
