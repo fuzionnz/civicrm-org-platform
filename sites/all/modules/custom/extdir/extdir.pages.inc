@@ -249,6 +249,7 @@ function _extdir_pages_filters_parse($filterExpr) {
     'field_extension_ready_value' => 'ready',
   );
 
+  // If a "ver" param is provided, override the default filter. The override could be empty (opt-out).
   if (array_key_exists('ver', $args)) {
     $versionParts = explode('.', $args['ver']);
     $termName = sprintf('CiviCRM %d.%d', $versionParts[0], $versionParts[1]);
@@ -262,12 +263,22 @@ function _extdir_pages_filters_parse($filterExpr) {
     }
   }
 
+  // If a "status" param is provided, override the default filter. The override could be empty (opt-out).
   if (array_key_exists('status', $args)) {
     if (empty($args['status'])) {
       unset($filters['field_extension_release_status_value']);
     } else {
       // TODO stable, stable+beta, stable+beta+alpha
       $filters['field_extension_release_status_value'] = $args['status'];
+    }
+  }
+
+  // If a "ready" param is provided, override the default filter. The override could be empty (opt-out).
+  if (array_key_exists('ready', $args)) {
+    if (empty($args['ready'])) {
+      unset($filters['field_extension_ready_value']);
+    } else {
+      $filters['field_extension_ready_value'] = $args['ready'];
     }
   }
 
@@ -341,7 +352,7 @@ class ExtdirQueryHelper {
    *   which are (mentally) part of the query -- and the SQL expressions which
    *   identify them
    */
-  function create($query, $entityAliases) {
+  static function create($query, $entityAliases) {
     return new ExtdirQueryHelper($query, $entityAliases);
   }
   function __construct($query, $entityAliases) {
