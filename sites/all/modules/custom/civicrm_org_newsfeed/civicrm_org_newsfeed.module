@@ -26,7 +26,7 @@ function civicrm_org_newsfeed_rss_page() {
     $view = views_get_view($view_name);
     if ($view) {
       foreach ($view->display as $display) {
-        if ($display->display_plugin == 'feed') {
+        if ($display->display_plugin == 'feed' && (!isset($display->display_options['enabled']) || $display->display_options['enabled'])) {
           $content = views_embed_view($view_name, $display->id);
           // Omit the outer wrappers
           $content = substr($content, strpos($content, '<channel'));
