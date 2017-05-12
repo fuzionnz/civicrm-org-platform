@@ -99,7 +99,15 @@ function webform_registration_validate($form, &$form_state) {
   }
 
   $fields = _webform_registration_get_fields($haystack, $settings);
-  
+
+  // Has user has opted out of registration?
+  if ($settings['opt_in'] !== '<none>') {
+    $opt_in_val = _webform_registration_get_form_field($settings['opt_in'], $haystack);
+    if ($settings['opt_in_value'] != $opt_in_val['value']) {
+      return;
+    }
+  }
+
   // Validate new or changing username.
   if (isset($fields['name']['value'])) {
     if ($error = user_validate_name($fields['name']['value'])) {
