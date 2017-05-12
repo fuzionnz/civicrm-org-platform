@@ -57,6 +57,11 @@ function cividownload_download_list() {
       'url' => "{$url}drupal6",
       'filename' => 'drupal6.tar.gz',
     ),
+    'backdrop' => array(
+      'title' => t('for Backdrop 1.x'),
+      'url' => "{$url}backdrop",
+      'filename' => 'backdrop.tar.gz',
+    ),
     'joomla' => array(
       'title' => t('for Joomla 2.5.x / 3.x'),
       'url' => "{$url}joomla",
