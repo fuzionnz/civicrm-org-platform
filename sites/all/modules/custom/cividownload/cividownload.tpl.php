@@ -1,5 +1,5 @@
-
-  <?php $block = module_invoke('block', 'block_view', '63');
+<!-- Download intro block -->
+<?php $block = module_invoke('block', 'block_view', '63');
 			print render($block['content']); ?>
 
 <!-- Download button -->
@@ -37,6 +37,9 @@
         <a href="<?php echo $url;?>" target="_blank">Download CiviCRM <?php echo $content['civicrm_lts_version']; ?> <?php echo $values['title']; ?></a></li>
     <?php } ?>
     </ul>
-  <?php $block = module_invoke('block', 'block_view', '64');
+
+<!-- Download footer block -->  
+<?php $block = module_invoke('block', 'block_view', '64');
 			print render($block['content']); ?>	
-	<?php echo views_embed_view('partners_and_contributors', 'block_4'); ?>
+<!-- Partner view -->
+<?php echo views_embed_view('partners_and_contributors', 'block_4'); ?>
