@@ -1,71 +1,42 @@
-<div class="crm-support">
-  Before downloading CiviCRM make sure your environment meets the 
-  <a href="https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades">minimum requirements</a> 
-  or contact one of our <a href="/hosting-providers">cloud providers</a>. 
-</div>
-<div class="crm-download-title">CiviCRM <?php echo $content['civicrm_version']; ?></div>
-<div class='crm-support'>
-  <div class='crm-introduction'>
-    The latest stable version of CiviCRM is <?php echo $content['civicrm_version']; ?>. Select a download based on the content management software (CMS) you are using.
-  </div>
 
-  <div class="crm-download-listing">
-    <?php foreach ($content['download_urls'] as $key => $values) { ?>
-      <div class="crm-download-buttons">
-        <?php
+  <?php $block = module_invoke('block', 'block_view', '63');
+			print render($block['content']); ?>
+
+<!-- Download button -->
+<div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download CiviCRM <?php echo $content['civicrm_version']; ?>&nbsp;&nbsp;
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+	  <?php foreach ($content['download_urls'] as $key => $values) { ?>
+	  		<li><?php
         $url = $values['url'];
         if (arg(1) == 'list' && variable_get('cividownload_mode') == 2 ) {
           $url = "https://download.civicrm.org/civicrm-{$content['civicrm_version']}-" . $values['filename'] . "?src=donate";
         }
         ?>
-        <a class="download-link" href="<?php echo $url;?>">Download</a>
-        &nbsp;CiviCRM <?php echo $content['civicrm_version']; ?> <?php echo $values['title']; ?>
-      </div>
-      <br/>
+        <a href="<?php echo $url;?>" target="_blank">Download CiviCRM <?php echo $content['civicrm_version']; ?> <?php echo $values['title']; ?></a></li>
     <?php } ?>
+  </ul>
   </div>
 </div>
-  <!-- LTS section -->
-
-<div class="crm-download-title">CiviCRM <?php echo $content['civicrm_lts_version']; ?> LTS</div>
-<div class="crm-support">
-  <div class="crm-introduction">
-  The current Long Term Support (LTS) release CiviCRM is <?php echo $content['civicrm_lts_version']; ?>. Select a download based on the content management software (CMS) you are using.
-  </div>
-  <div class="crm-download-listing">
+    <p>CiviCRM <?php echo $content['civicrm_version']; ?> is the latest version, containing the latest features and improvements. <a href="https://civicrm.org/blog/tags/release">View recent release announcements for details</a>.</p>
+    <h2 class="thin border">Other options</h2>
+    <h3 class="thick capital">Long term support</h3>
+    <p>The current Long Term Support (LTS) release CiviCRM is <?php echo $content['civicrm_lts_version']; ?>. Select a download based on the content management software (CMS) you are using.</p>
+    <ul>
   <?php foreach ($content['download_urls'] as $key => $values) { ?>
-    <div class="crm-download-buttons">
-<?php
-$url = $values['url'];
-if (arg(1) == 'list' && variable_get('cividownload_mode') == 2 ) {
-$url = "https://download.civicrm.org/civicrm-{$content['civicrm_lts_version']}-" . $values['filename'] . "?src=donate";
-}
-?>
-      <a class="download-link" href="<?php echo $url;?>&rtype=lts">Download</a>
-      &nbsp;CiviCRM <?php echo $content['civicrm_lts_version']; ?> <?php echo $values['title']; ?>
-    </div>
-    <br/>
-  <?php } ?>
-  </div>
-</div>
-<!-- Resources section -->
-  <div class="crm-support" style="border: 1px solid grey; padding: 10px;">
-    <div class="crm-introduction" style="font-size: 1.5em;">Resources</div>
-    <div class="crm-introduction" style="font-size: 1.2em;">
-      <a href="https://civicrm.org/versions" target="_blank">Which version should I get? ›</a>
-      <br />
-       <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades" target="_blank">Installation and Upgrade Guides ›</a>
-       <br />
-      <a href="http://sourceforge.net/projects/civicrm/files/" target="_blank">Previous and pre-release versions (on Sourceforge.net) ›</a>
-      <br />
-      <a href="http://book.civicrm.org/user" target="_blank">User and Administrator Guide ›</a>
-      <br />
-      <a href="http://docs.civicrm.org/dev/en/master/" target="_blank">Developer Documentation ›</a>
-    </div>
-  </div>
-  <br />
-
-<!-- Hosting link section -->
-<div style="background-color: #7EC757; padding: 10px; color: white; font-weight: bold; font-size: 18px; width: 90%">
-  OR ... <a href="https://civicrm.org/providers/hosting" target="_blank">start using CiviCRM on demand &quot;in the cloud&quot; by signing up with one of our Hosting Providers.</a>
-</div>
+	  		<li><?php
+        $url = $values['url'];
+        if (arg(1) == 'list' && variable_get('cividownload_mode') == 2 ) {
+          $url = "https://download.civicrm.org/civicrm-{$content['civicrm_lts_version']}-" . $values['filename'] . "?src=donate";
+        }
+        ?>
+        <a href="<?php echo $url;?>" target="_blank">Download CiviCRM <?php echo $content['civicrm_lts_version']; ?> <?php echo $values['title']; ?></a></li>
+    <?php } ?>
+    </ul>
+  <?php $block = module_invoke('block', 'block_view', '64');
+			print render($block['content']); ?>	
+	<?php echo views_embed_view('partners_and_contributors', 'block_4'); ?>
