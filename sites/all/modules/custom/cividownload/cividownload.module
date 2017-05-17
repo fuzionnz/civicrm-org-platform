@@ -51,31 +51,37 @@ function cividownload_download_list() {
       'title' => t('for Drupal 7.x'),
       'url' => "{$url}drupal",
       'filename' => 'drupal.tar.gz',
+      'versions' => array('4.6','4.7'),
     ),
     'drupal6' => array(
       'title' => t('for Drupal 6.x'),
       'url' => "{$url}drupal6",
       'filename' => 'drupal6.tar.gz',
+      'versions' => array('4.6','4.7'),
     ),
     'backdrop' => array(
       'title' => t('for Backdrop 1.x'),
       'url' => "{$url}backdrop",
       'filename' => 'backdrop.tar.gz',
+      'versions' => array('4.7'),
     ),
     'joomla' => array(
       'title' => t('for Joomla 2.5.x / 3.x'),
       'url' => "{$url}joomla",
       'filename' => 'joomla.zip',
+      'versions' => array('4.6','4.7'),
     ),
     'wordpress' => array(
       'title' => t('for WordPress 3.x / 4.x'),
       'url' => "{$url}wordpress",
       'filename' => 'wordpress.zip',
+      'versions' => array('4.6','4.7'),
     ),
     'l10n' => array(
       'title' => t('localization files'),
       'url' => "{$url}l10n",
       'filename' => 'l10n.tar.gz',
+      'versions' => array('4.6','4.7'),
     ),
   );
 

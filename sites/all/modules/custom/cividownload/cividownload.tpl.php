@@ -10,7 +10,9 @@
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
-	  <?php foreach ($content['download_urls'] as $key => $values) { ?>
+	  <?php foreach ($content['download_urls'] as $key => $values) {
+		  	if (!in_array('4.7', $values['versions'])) continue; 
+		  	?>
 	  		<li><?php
         $url = $values['url'];
         if (arg(1) == 'list' && variable_get('cividownload_mode') == 2 ) {
@@ -27,7 +29,9 @@
     <h3 class="thick capital">Long term support</h3>
     <p>The current Long Term Support (LTS) release CiviCRM is <?php echo $content['civicrm_lts_version']; ?>. Select a download based on the content management software (CMS) you are using.</p>
     <ul>
-  <?php foreach ($content['download_urls'] as $key => $values) { ?>
+  <?php foreach ($content['download_urls'] as $key => $values) { 
+	  	  if (!in_array('4.6', $values['versions'])) continue; 
+				?>
 	  		<li><?php
         $url = $values['url'];
         if (arg(1) == 'list' && variable_get('cividownload_mode') == 2 ) {
